@@ -1,0 +1,1373 @@
+/*Algorithm:
+Step 1: welcome msg
+Step 2: Asking Customer details
+Step 3: Asking customer if he would have the parcel or would have it in the restaurant itself
+Step 4:Asking for no. of family members to decide the seat no.
+Step 5: Asking for reservation of seat for family which will have additional charges also displaying
+what all benefits will it have
+Step 6:Selection of choice for AC or Non AC
+Step 7: Additional charges for AC
+Step 8:Asking if he\she would like to have veg, non veg or both and displaying the menu according to that
+Step 8:Displaying menu
+Step 9:Menu will include breakfast,lunch and dinner
+Step 10:Displaying what all food will be included in breakfast,lunch,dinner along with the price.
+Step 11:Selection of the choice using switch case.
+Step 12: Another menu will be displayed soon after the selection of food which will include beverages,
+snacks,indian snacks like samosas,vada pavs 
+Step 13: Asking for feedback which will be optional
+Step 14: Payment of bills displaying the additional chargesA
+Step 15: Asking for the mode of payment :card or cash?
+Step 16:Displaying a thank u msg */
+
+import java.util.*;
+class RestaurantManagement
+{
+    final Scanner sc=new Scanner(System.in);
+    String name;
+    long phone;
+    String str;
+    int addchar=0;
+    double sum=0;
+    
+    int famno;
+    void welcm()
+    {
+        System.out.println("\t\t\t\t**************************************************");
+        System.out.println("\t\t\t\t--------------------------------------------------");
+        System.out.println("\t\t\t\t*********WELCOME TO HOTEL PALLAVI AVIDA***********");
+        System.out.println("\t\t\t\t--------------------------------------------------");
+        System.out.println("\t\t\t\t**************************************************");
+    }
+
+    void custdet()
+    {
+        System.out.println("Enter your name:");
+        name=sc.next();
+        System.out.println("Enter your phone number:");
+        phone=sc.nextLong();
+        System.out.println("Enter the no. of family members:");
+        famno=sc.nextInt();
+        System.out.println("In which section would you like to be seated?");
+        //System.out.println("1. Yes\n2. No");
+        System.out.println("Enter 'NA_NVG' for booking Non-AC Non Vegeterian section,\nEnter 'A_NVG' for booking AC Non Vegeterain Section\n Enter 'NA_VG for NON-AC Vegeterian Section,\nEnter A_VG for AC Vegeterian Section"); 
+        str=sc.next();
+        String nanvg="NA_NVG",anvg="A_NVG",navg="NA_VG",avg="A_VG";
+        if(str.equalsIgnoreCase(nanvg)){
+            System.out.println("You have booked Non-AC Non Vegeterian Section!");
+            addchar=15;
+        }
+        else if(str.equalsIgnoreCase(anvg)){
+            System.out.println("You have booked AC Non Vegeterian Section!");
+            addchar=20;
+        }
+        else if(str.equalsIgnoreCase(navg)){
+            System.out.println("You have booked Non-AC Vegeterian Section!");
+        }
+        else if(str.equalsIgnoreCase(avg)){
+            System.out.println("You have booked AC Vegeterian Section!");
+        }
+        else{
+            System.out.println("Please try again!");
+            System.exit(0);
+        }
+    }
+
+    void snacks()
+    {
+        System.out.println("\n\n\n************SNACKS************");
+        System.out.println("\n\n************SANDWICH************");
+        System.out.println("MENU WITHOUT FRIES");
+        System.out.println("\n ITEM NAME                          \tCOST");
+        System.out.println("1)Bombay Grilled Sandwich             \t50");
+        System.out.println("2)Chutney Cheese Sandwich             \t55");
+        System.out.println("3)Chilli Cheese Sandwich              \t55");
+        System.out.println("4)Double Cheese Sandwich              \t70");
+        System.out.println("5)Sweetcorn Sandwich                  \t70");
+        System.out.println("6)Chilli Cheese Sandwich(Special)     \t70");
+        System.out.println("7)Paneer Tikka Sandwich               \t80");
+        System.out.println("8)Mushroom Cheese Sandwich            \t80");
+
+        System.out.println("\n\n\nMENU WITH FRIES");
+        System.out.println("\n ITEM NAME                          \tCOST");
+        System.out.println("1)Bombay Grilled Sandwich             \t120");
+        System.out.println("2)Chutney Cheese Sandwich             \t120");
+        System.out.println("3)Chilli Cheese Sandwich              \t120");
+        System.out.println("4)Double Cheese Sandwich              \t120");
+        System.out.println("5)Sweetcorn Sandwich                  \t120");
+        System.out.println("6)Chilli Cheese Sandwich(Special)     \t120");
+        System.out.println("7)Paneer Tikka Sandwich               \t120");
+        System.out.println("8)Mushroom Cheese Sandwich            \t120");
+
+        String sand[]={"Bombay Grilled Sandwich ","Chutney Cheese Sandwich","Chilli Cheese Sandwich ","Double Cheese Sandwich ","Sweetcorn Sandwich ","Chilli Cheese Sandwich(Special)","Paneer Tikka Sandwich","Mushroom Cheese Sandwich"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to have Sandwich? If Yes enter '1' or else '0'");
+        int ent=sc.nextInt();
+        int ent2=0;
+        if(ent==1)
+        {
+            System.out.println("Would you like to have Fries with Sandwich? If Yes enter '1' or else '0':");
+            ent2=sc.nextInt();
+            if(ent2==1)
+            {
+                System.out.println("Enter any One option from 1 to 8:");
+                int ent3=sc.nextInt();
+                switch(ent3)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:sum=sum+120;
+                    break;
+                    default:System.out.println("Invalid Input");
+                }
+                for(int i=0;i<sand.length;i++)
+                {
+                    if(i==ent3)
+                        System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+sand[i-1]);
+                }
+                System.out.println("\n\n\nDisplaying another menu for Non Veg Sandwich");
+            }
+        
+
+        else if(ent2==0)
+        {
+            System.out.println("Enter any One option form 1 to 8");
+            int ent3=sc.nextInt();
+            if(ent2==1)
+            {
+                sum=(sum+50) ;
+
+            }
+            else if(ent2==2||ent2==3)
+            {
+                sum=(sum+55) ;
+            }
+            else if(ent2==4||ent2==5||ent2==6)
+            {
+                sum=(sum+70) ;
+            }
+            else if(ent2==7||ent2==8)
+            {
+                sum=(sum+80) ;
+            }
+            for(int i=0;i<sand.length;i++)
+            {
+                if(i==ent3)
+                    System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+sand[i-1]);
+            }
+
+            System.out.println("Displaying another menu for Non Veg Sandwich");
+        }
+        }
+
+        else 
+        {
+            System.out.println("Displaying Menu of Non Veg Sandwich:");
+        }
+
+        System.out.println("*********NON VEG************");
+        System.out.println("********SANDWICH************");
+        System.out.println("\n******MENU WITHOUT FRIES****");
+        System.out.println("1)Double Fluffy Cheese Omelette Sandwich      \tCost=80");
+        System.out.println("2)Cheesy Mayo Grilled Chicken Sandwich        \tCost=90");
+        System.out.println("3)Chicken Tikka Sandwich                      \tCost=90");
+        System.out.println("4)Chicken Club Sandwich                       \tCost=90");
+        System.out.println("5)Chicken Club Sandwich                        \tCost=100");
+
+        System.out.println("\nMENU WITH FRIES");
+
+        System.out.println("1)Double Fluffy Cheese Omelette Sandwich    \tCost=120");
+        System.out.println("2)Cheesy Mayo Grilled Chicken Sandwich      \tCost=140");
+        System.out.println("3)Chicken Tikka Sandwich                    \tCost=140");
+        System.out.println("4)Chciken Club Sandwich                     \tCost=140");
+        System.out.println("5)Chicken Club Sandwich                      \tCost=150");
+
+        String nvgsand[]={"Double Fluffy Cheese Omelette Sandwich","Cheesy Mayo Grilled Chicken Sandwich","Chicken Tikka Sandwich","Chicken Club Sandwich","Chicken Club Sandwich"};
+
+        System.out.println("Would you like to have non veg sandwich?");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int y=sc.nextInt();
+        if(y==1)
+        {
+            System.out.println("Would you like to have Fries along with Sandwich?");
+            System.out.println("Enter 1 for yes and 0 for ni:");
+            int b=sc.nextInt();
+            if(b==1)
+            {
+                System.out.println("Enter the serial number of the Sandwich you want?");
+                int c=sc.nextInt();
+                if(c==1)
+                {
+                    sum=(sum+120) ;
+                }
+                else if(c==2||c==3||c==4)
+                {
+                    sum=(sum+140) ;
+                }
+                else if(c==5)
+                {
+                    sum=(sum+150) ;
+                }
+                for(int i=0;i<nvgsand.length;i++)
+                {
+                    if(i==c)
+                        System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+nvgsand[i-1]);
+                }
+            }
+            else if(b==0)
+            {
+                System.out.println("Enter the serial no of the sandwich you want:");
+                int c=sc.nextInt();
+                if(c==1)
+                {
+                    sum=(sum+80) ;
+                }
+                else if(c==2||c==3||c==4)
+                {
+                    sum=(sum+90) ;
+                }
+                else if(c==5)
+                {
+                    sum=(sum+100) ;
+                }
+                for(int i=0;i<nvgsand.length;i++)
+                {
+                    if(i==c)
+                    System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+nvgsand[i-1]);
+                }
+            }
+
+            else if(y==0)
+            {
+                System.out.println("Displaying the menu for Burgers:");
+            }
+        }
+
+        System.out.println("\n\n\n\n\n*********BURGERS*************");
+        System.out.println("******MENU WITHOUT FRIES************");
+        System.out.println("1)Cheese Veg Burger\tCost=80");
+        System.out.println("2)Corn Crushed Pesto Paneer Burger                \tCost=80");
+        System.out.println("3)Crispy Chicken And Cheese Burger                \tCost=100");
+        System.out.println("4)Corn Crushed Pesto Chicken Cheese Burger        \tCost=100");
+
+        System.out.println("*******Menu With Fries*************");
+        System.out.println("1)Cheese Veg Burger\tCost=130");
+        System.out.println("2)Corn Crushed Pesto Paneer Burger                \tCost=130");
+        System.out.println("3)Crispy Chicken And Cheese Burger                \tCost=150");
+        System.out.println("4)Corn Crushed Pesto Chicken Cheese Burger        \tCost=150");
+
+        String burger[]={"Cheese Veg Burger","Corn Crushed Pesto Paneer Burger","Crispy Chicken And Cheese Burger","Corn Crushed Pesto Chicken Cheese Burger"};
+
+        System.out.println("Would you like to have burgers:");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int a=sc.nextInt();
+        if(a==1)
+        {
+            System.out.println("Would you like to have fries along with the burger:");
+            System.out.println("Enter 1 for Yes and 0 for No:");
+            int d=sc.nextInt();
+            if(d==1)
+            {
+                System.out.println("Enter the serial number of the burger which you want:");
+                int e=sc.nextInt();
+                if(e==1||e==2)
+                {
+                    sum=(sum+130) ;
+                }
+                else if(e==3||e==4)
+                {
+                    sum=(sum+150) ;
+                }
+                for(int i=0;i<burger.length;i++)
+                {
+                    if(i==e)
+                        System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+burger[i-1]);
+                }
+
+            }
+            else if(d==0)
+            {
+                System.out.println("Enter the serial no. of the burger which you want to buy:");
+                int e=sc.nextInt();
+                if(e==1||e==2)
+                {
+                    sum=(sum+80) ;
+                }
+                else if(e==3||e==4)
+                {
+                    sum=(sum+100) ;
+                }
+                for(int i=0;i<burger.length;i++)
+                {
+                    if(i==e)
+                        System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+burger[i-1]);
+                }
+
+            }
+            else if(a==0)
+            {
+                System.out.println("Displaying the menu for pizza:");
+            }
+        }
+
+        System.out.println("***************PIZZA(VEG)*************");
+        System.out.println("9 Inch");
+        System.out.println("1)Veg Supreme             \tCost=140");
+        System.out.println("2)Classic Margritta       \tCost=140");
+        System.out.println("3)Paneer Tikka Pizza      \tCost=150");
+
+        String vp[]={"VEG SUPREME","CLASSIC MARGRITTA","PANEER TIKKA PIZZA"}; //"9 INCH",
+
+        System.out.println("***************PIZZA(NON-VEG)************");
+        System.out.println("1)Chicken & Jalapeno      \tCost=160");
+        System.out.println("2)Chicken Tikka Pizza     \tCost=160");
+
+        String nvp[]={"CHICKEN & JALAPENO","CHICKEN TIKKA PIZZA"};
+
+        //Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to have pizza:");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int a1=sc.nextInt();
+        int z=0;
+        if(a1==1)
+        {
+
+            System.out.println("Would you like to have veg Pizza or Non veg Pizza?");
+            System.out.println("Enter 1 for Veg Pizza and 2 for Non Veg Pizza:");
+            z=sc.nextInt();
+            if(z==1)
+            {
+                System.out.println("Enter the serial number of the pizza which you would love to have:");
+                int f=sc.nextInt();
+                if(f==1||f==2)
+                {
+                    sum=(sum+140) ;
+                }
+                else if(f==3)
+                {
+                    sum=(sum+150) ;
+                }
+                for(int i=1;i<vp.length;i++)
+                {
+                    if(i==f)
+                        System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+vp[i-1]);
+                }
+            }
+
+            else if(z==2)
+            {
+                System.out.println("Enter the serial number of the pizza which you would love to have:");
+                int f=sc.nextInt();
+                if(f==1||f==2)
+                {
+                    sum=(sum+160) ;
+                }
+                for(int i=0;i<nvp.length;i--)
+                {
+                    if(i==f)
+                    {
+                        System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+nvp[i-1]);
+                    }
+
+                }
+            }
+        }
+
+        else if(a1==0)
+        {
+            System.out.println("Displaying the menu for starters:");
+        }
+    }
+
+    void Starters()
+    {
+        System.out.println("/n/n/n##########STARTERS(VEG)##########");
+        System.out.println("/n1)PotatoWedges(10 PCS)               \tCost=80");
+        System.out.println("2)Classic French Fries                 \tCost=80");
+        System.out.println("3)Masala French Fries                  \tCost=90");
+        System.out.println("4)Cheese Garlic French Fries(6PCS)     \tCost=80");
+        System.out.println("5)Veg Cheese Fingers(6PCS)             \tCost=100");
+        System.out.println("6)Gobi65                               \tCost=100");
+        System.out.println("7)Mushrooms65                          \tCost=120");
+        System.out.println("8)Paneer65                             \tCost=120");
+        System.out.println("9)Paneer Tikka(6PCS)                   \tCost=120");
+        System.out.println("10)Malai Paneer Tikka                  \tCost=120");
+        System.out.println("11)Veg Sheek Kebab                     \tCost=120");
+        System.out.println("12)Chilly Paneer                       \tCost=110");
+        System.out.println("13)Chilly Mushroom                     \tCost=110");
+        System.out.println("14)Chilly Gobi                         \tCost=100");
+
+        String start[]={"POTATO WEDGES(10PCS)","CLASSIC FRENCH FRIES","MASALA FRENCH FRIES","CHEESE GARLIC FRENCH FRIES(6PCS)","VEG CHEESE FINGERS(6PCS)","GOBI65","MUSHROOM65","PANEER65","PANEER TIKKA(6PCS)","MALAI PANNER TIKKA","VEG SHEEKH KEBAB","CHILLY PANEER","CHILLY MUSHRROM","CHILLY GOBI"};
+
+        Scanner sc=new Scanner(System.in);
+
+        System.out.println("\n\nWould you like to have some STARTERS:");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int a1=sc.nextInt();
+        if(a1==1)
+        {
+
+            System.out.println("\n\nEnter the serial number of the item which you would like to have:");
+            int ent1=sc.nextInt();
+
+            if(ent1==1||ent1==2||ent1==3)
+            {
+                sum=(sum+80) ;
+            }
+            else if(ent1==3)
+            {
+                sum=(sum+90) ;
+            }
+            else if(ent1==5||ent1==6||ent1==14)
+            {
+                sum=(sum+100) ;
+            }
+            else if(ent1==7||ent1==8||ent1==9||ent1==10||ent1==11)
+            {
+                sum=(sum+120) ;
+            }
+            else if(ent1==12||ent1==13)
+            {
+                sum=(sum+110) ;
+            }
+            else
+            {
+                System.out.println("Invalid Input");
+            }
+            for(int i=0;i<start.length;i++)
+            {
+                if(i==ent1)
+                    System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+start[i-1]);
+            }
+
+        }
+        else if(a1==0)
+        {
+            System.out.println("Displaying the menu for starters non veg:");
+        }
+    }
+
+    void starternonveg()
+    {
+        System.out.println("\n\n\n#############STARTERS(NON-VEG)###########");
+        System.out.println("1)Chicken Popcorn                            \tCost=120");
+        System.out.println("2)Chicken Spring Roll(8PCS)                  \tCost=120");
+        System.out.println("3)Chicken Nuggets(8PCS)                      \tCost=120");
+        System.out.println("4)Chicken FIngers(8PCS)                      \tCost=120");
+        System.out.println("5)Chilly chicken Dry                         \tCost=130");
+        System.out.println("6)Dragon Chicken                             \tCost=130");
+        System.out.println("7)Chicken Manchurian Dry                     \tCost=130");
+        System.out.println("8)Honey Spice Chicken                        \tCost=130");
+        System.out.println("9)Chicken 65(6PCS)                           \tCost=130");
+        System.out.println("10)Chicken Samosa(6PCS)                      \tCost=130");
+        System.out.println("11)Chicken Tikka(6PCS)                      \tCost=140");
+        System.out.println("12)Chicken Malai Kebab(6PCS)                 \tCOST=140");
+        System.out.println("13)Tandoori CHicken Half                     \tCost=150");
+        Scanner sc=new Scanner(System.in);
+
+        String nvg[]={"CHICKEN POPCORN","CHICKEN SPRING ROLL(8PCS)","CHICKEN NUGGETS(8PCS)","CHICKEN FINGERS(8PCS)","CHILLY CHICKEN DRY","DRAGON CHICKEN","CHICKEN MANCHURIAN DRY","HONEY SPICE CHICKEN","CHICKEN 65(6PCS)","CHICKEN SAMOSA(6PCS)","CHICKEN TIKKA(6PCS)","CHICKEN MALAI KEBAB(6PCS)","TANDOORI CHICKEN HALF"};
+
+        System.out.println("Would you like to have some NON VEG STARTERS:");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int a1=sc.nextInt();
+        if(a1==1)
+        {
+            System.out.println("\n\n Enter the serial number of non veg food which you would like to have:");
+            int ent1=sc.nextInt();
+            if(ent1==1||ent1==2||ent1==3||ent1==4)
+            {
+                sum=(sum+120) ;
+            }
+            else if(ent1==5||ent1==6||ent1==7||ent1==8||ent1==9||ent1==10)
+            {
+                sum=(sum+130) ;
+            }
+            else if(ent1==12||ent1==13)
+            {
+                sum=(sum+140) ;
+            }
+            else if(ent1==13)
+            {
+                sum=(sum+150) ;
+            }
+            else
+            {
+                System.out.println("Invalid Input");
+            }
+            for(int i=0;i<nvg.length;i++)
+            {
+                if(i==ent1)
+                System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY  PLACED FOR "+nvg[i-1]);
+            }
+        }
+        else if(a1==0)
+        {
+            System.out.println("Displaying the menu for non veg appetizer:");
+        }
+    }
+
+    void  nvgapp()
+    {
+        System.out.println("\n\n\n*******NON-VEG APPETIZER*********");
+        System.out.println("1)Murg Seekh Kebab                               \tCost=175");
+        System.out.println("2)Murg Tikka                                     \tCost=175");
+        System.out.println("3)Chicken Malai Tikka                            \tCost=175");
+        System.out.println("4)Murg Banjara                                   \tCost=175");
+        System.out.println("5)Murg Hariyali Chooza                           \tCost=275");
+        System.out.println("6)Bhatti De Murg                                 \tCost=475");
+        System.out.println("7)Tandoori Non Veg Platter                       \tCost=475");
+        System.out.println("8)Chicken Crispy                                 \tCost=225");
+        System.out.println("9)Chicken Salt n Pepper                          \tCost=225");
+        System.out.println("10)Chicken Satay with Peanut Sauce               \tCost=225");
+        System.out.println("11)Chicken Wings                                 \tCost=225");
+        Scanner sc=new Scanner(System.in);
+        
+        String napp[]={"MURG SEEKH KEBEB","MURG TIKKA","CHICKEN MALAI TIKKA","MURG BANAJARA","MURG HARIYALI CHOOZA","BHATTI DE MURG","TANDOORI NON VEG PLATTER","CHICKEN CRISPY","CHICKEN SALT N PEPPER","CHICKEN SATAY WITH PEANUT SAUCE","CHICKEN WINGS"};
+        
+        System.out.println("\n\nWould you like to have Non Veg Appetizer");
+        System.out.println("Enter 1 for yes and 0 for no");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial number of the food item would you like to have:");
+            int ent2=sc.nextInt();
+            if(ent2==1||ent2==3||ent2==3)
+            {
+                sum=(sum+175) ;
+            }
+            else if(ent1==5)
+            {
+                sum=(sum+275) ;
+            }
+            else if(ent2==6||ent2==7)
+            {
+                sum=(sum+475) ;
+            }
+            else if(ent2==8||ent2==9||ent2==10||ent2==11)
+            {
+                sum=(sum+225) ;
+            }
+            for(int i=0;i<napp.length;i++)
+            {
+                if(i==ent2)
+                System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+napp[i-1]);
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Displaying menu for Main Course");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+
+    }
+
+    void maincourse()
+    {
+        System.out.println("\n\n\n*******MAIN COURSE*********");
+        System.out.println("1)Diced Veg. Hong Kong Style                        \tCost=175");
+        System.out.println("2)Veg. Manchurian                                   \tCost=175");
+        System.out.println("3)Paneer Chilly                                     \tCost=175");
+        System.out.println("4)Gobi Manchurian                                   \tCost=175");
+        System.out.println("5)Baby Corn Chilli                                  \tCost=275");
+        System.out.println("6)Sweet & Sour Veg.                                 \tCost=475");
+        System.out.println("7)Soya Schezwan                                     \tCost=475");
+        System.out.println("8)Soya Chilli                                       \tCost=225");
+        System.out.println("9)Soya Manchurian                                   \tCost=225");
+        System.out.println("10)Mushroom Chilly                                  \tCost=225");
+        System.out.println("11)Paneer Manchurian                                \tCost=225");
+        Scanner sc=new Scanner(System.in);
+        
+        String main[]={"DICED VEG.HONG KONG STYLE","VEG.MANCHURIAN","PANEER CHILLY","GOBI MANCHURIAN","BABY CORN CHILLY","SWEET &SOUR VEG.","SOYA SCHEZWAN","SOYA CHILLI","SOYA MANCHURIAN","MUSHROOM CHILLY","PANNER MANCHURIAN"}; 
+        
+        System.out.println("\n\nWould you like to have Main Course");
+        System.out.println("Enter 1 for yes and 0 for no");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial number of the food item would you like to have:");
+            int ent2=sc.nextInt();
+            if(ent2==1||ent2==3||ent2==3)
+            {
+                sum=(sum+175) ;
+            }
+            else if(ent1==5)
+            {
+                sum=(sum+275) ;
+            }
+            else if(ent2==6||ent2==7)
+            {
+                sum=(sum+475) ;
+            }
+            else if(ent2==8||ent2==9||ent2==10||ent2==11)
+            {
+                sum=(sum+225) ;
+            }
+            for(int i=0;i<main.length;i++)
+            {
+                if(i==ent2)
+                System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR"+main[i-1]);
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Displaying menu for Sea Food");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+
+    }
+
+    void sea()
+    {
+        System.out.println("\n\n\n*******SEA FOOD IN DESI STYLE********");
+        System.out.println("1)Macchi Achaari                                  \tCost=250");
+        System.out.println("2)Haryali FIsh                                    \tCost=250");
+        System.out.println("3)Reshmi Fish Tikka                               \tCost=250");
+        System.out.println("4)Mahi Tikka Koli Mirch                           \tCost=250");
+        System.out.println("5)Fish Koliwada                                   \tCost=275");
+        System.out.println("6)Fish Finger                                     \tCost=250");
+        System.out.println("7)FIsh Amritshar                                  \tCost=275");
+        System.out.println("8)Prawns Koliwada                                 \tCost=375");
+        System.out.println("9)Tawa Fried Prawns                               \tCost=450");
+        Scanner sc=new Scanner(System.in);
+        String sea[]={"MACCHI ACHARI","HARIYALI FISH","RESHMI FISH TIKKA","MAHI TIKKA KOLI MIRCH","FISH KOLIWADA","FISH FINGER","FISH AMRITSHAR","PRAWNS KOLIWADA","TAWA FRIED PRAWNS"};
+        System.out.println("\nWould you ike to have Sea Food");
+        System.out.println("Enter 1 for yes and 0 for no");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial number of the food item which you want:");
+            int ent2=sc.nextInt();
+            if(ent2==1||ent2==2||ent2==3||ent2==4||ent2==6)
+            {
+                sum=(sum+250) ;
+
+            }
+            else if(ent2==5||ent2==7)
+            {
+                sum=(sum+275) ;
+            }
+            else if(ent2==8)
+            {
+                sum=(sum+375) ;
+            }
+            else if(ent2==9)
+            {
+                sum=(sum+450) ;
+            }
+            else
+            {
+                System.out.println("Invalid Input");
+            }
+            for(int i=1;i<sea.length;i++)
+            {
+                if(i==ent2)
+                System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+sea[i-1]);
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Displaying menu of Veg Appetizers");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void vegapp()
+    {
+        System.out.println("\n\n\n*********VEGETERIAN APPETIZERS*********");
+        System.out.println("1)Onion Fritters                               \tCost=125");
+        System.out.println("2)Methi Corn Tikki                             \tCost=140");
+        System.out.println("3)Veg Crispy Roll                              \tCost=140");
+        System.out.println("4)Honey Cauliflower                            \tCost=140");
+        System.out.println("5)Seven Sticks Nugget                          \tCost=140");
+        System.out.println("6)Cauliflower Manchuria                        \tCost=140");
+        System.out.println("7)Crispy Vegetables                            \tCost=140");
+        System.out.println("8)Tandoori Bharwan Aloo                        \tCost=140");
+        System.out.println("9)Paneer Kathi Roll                            \tCost=150");
+        System.out.println("10)Nimbu Panner tikka                          \tCost=150");
+        System.out.println("11)Paneer TIkka Kali Mirch                     \tCost=175");
+        System.out.println("12)Chilly Paneer Schezwan                      \tCost=175");
+        System.out.println("13)Grilled Mushrooms                           \tCost=175");
+        System.out.println("14)Veg Platter                                 \tCost=350");
+        Scanner sc=new Scanner(System.in);
+        String veg[]={"ONION FLITTERS","METHI CORN TIKKA","VEG CRISPY ROLL","HONEY CAULIFLOWER","SEVEN STICKS NUGGETS","CAULIFLOWER MANCHURIA","CRISPY VEGETABLES","TANDOORI BHARWAN ALOO","PANEER KATHI ROLL","NIMBU PANNER TIKKA","PANEER TIKKA KALI MIRCH","CHILLY PANEER SCHEZWAN","GRILLED MUSHROOMS","VEG PLATTER"};
+        System.out.println(" Would you like to have Vegterian Appetizers?");
+        System.out.println("ENter 1 for yes and 0 for no");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial number of the food item which you would like to have:");
+            int ent2=sc.nextInt();
+            if(ent2==1)
+            {
+                sum=(sum+1225) ;
+            }
+            else if(ent2==2||ent2==3||ent2==4||ent2==5||ent2==6||ent2==7||ent2==8)
+            {
+                sum=(sum+140) ;
+            }
+            else if(ent2==9||ent2==10)
+            {
+                sum=(sum+150) ;
+            }
+            else if(ent2==11||ent2==12||ent2==13)
+            {
+                sum=(sum+175) ;
+            }
+            else if(ent2==14)
+            {
+                sum=(sum+350) ;
+            }
+            else
+            {
+                System.out.println("Invalid Input");
+            }
+            for(int i=0;i<veg.length;i++)
+            {
+                if(i==ent2)
+                System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+veg[i-1]);
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Dispalying menu for Asian Delights And combo");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void asian()
+    {
+        System.out.println("\n\n\n******ASIAN DELIGHTS AND COMBO********");
+        System.out.println("1)Fried Rice\tCost=150");
+        System.out.println("2)Hakka noodles \tCost=200");
+        System.out.println("3)Singapore Noodles\tCost=200");
+        System.out.println("4)Chicken chilly Sichuan\tCOst=250");
+        System.out.println("5)Thai Red or Green Curry\tCost=300");
+        System.out.println("6)Vegetable Noodles\tCost=125");
+        System.out.println("7)Paneer in hot Garlic Sauce\tCost=175");
+        System.out.println("8)Vegetable Manchurian\tCost=200");
+        System.out.println("9)Rice and Noodles Combination\tCost=275");
+        System.out.println("10)Chicken in hot garlic sauce\tCost=250");
+        System.out.println("11)Chicken Manchurain\tCost=300");
+        System.out.println("12)Baby Corn & Mushroom Sweet & sour\tCost=250");
+        
+        String asia[]={"FRIED RICE","HAKKA NOODLES","SINGAPORE NOODLES","THAI RED OR GREEN CURRY","VEGETABLES NOODLES","PANEER IN HOT GARLIC SAUCE","VEGETABLE MANCHURIAN","RICE AND NOODLES COMBINATION","CHICKEN IN HOT GARLIC SAUCE","CHICKEN MANCHURIAN","BABY CORN AND MUSHROOM SWEET&SOUR"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to have some Asian Delights?");
+        System.out.println("Enter 1 for yes and 0 for no");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial number of the food item which you would like to have:");
+            int ent2=sc.nextInt();
+            if(ent2==1)
+            {
+                sum=(sum+150) ;
+            }
+            else if(ent2==2||ent2==3)
+            {
+                sum=(sum+200) ;
+            }
+            else if(ent2==4||ent2==10||ent2==12)
+            {
+                sum=(sum+250) ;
+            }
+            else if(ent2==5||ent2==11)
+            {
+                sum=(sum+300) ;
+            }
+            else if(ent2==6)
+            {
+                sum=(sum+175) ;
+            }
+            else if(ent2==9)
+            {
+                sum=(sum+275) ;
+            }
+            else
+            {
+                System.out.println("Invalid Input");
+            }
+            for(int i=0;i<asia.length;i++)
+            {
+                if(i==ent2)
+                System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+asia[i-1]);
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("\nDisplaying menu for Non Veg Main Course");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void nonvgmain()
+    {
+        System.out.println("\n\n\n\n***********NON-VEG MAIN COURSE***********");
+        System.out.println("1)Murg Musallian \tCost=200");
+        System.out.println("2)Handi Murg\tCost=200");
+        System.out.println("3)Chicken Kolhapuri\tCost=200");
+        System.out.println("4)Murg Kerma Elaichi\tCost=250");
+        System.out.println("5)Murg Saagwala\tCost=200");
+        System.out.println("6)Chicken Tikka Masala\tCost=250");
+        System.out.println("7)Rogan Josh Kashmiri\t Cost=250");
+        System.out.println("8)Bhuna Gosht\tCost=250");
+        System.out.println("9)Gosht Palak\tCOst=250");
+        System.out.println("10)Mutten Shahi Kerma\tCost=280");
+        System.out.println("11)Murg Makhani\tCost=250");
+        
+        String nonmain[]={"MURG MUSALLIAN","HANDI MURG","CHICKEN KOLHAPURI","MURG KERMA ELAICHI","MURG SAAGWALA","CHICKEN TIKKA MASALA","ROGAN JOSH KASHMIRI","BHUNA GOSHT","GOSHT PALAK","MUTTEN SHAHI KERMA","MURG MAKHANI"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to have Non Veg Main Course?");
+        System.out.println("Enter 1 for yes and 0 for no");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial number of the food item which you would like to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 5:sum=(sum+200) ;
+                break;
+                case 4:
+                case 6:
+                case 7:
+                case 8:
+                case 9: 
+                case 11: sum=(sum+250) ;
+                break;
+                case 10:sum=(sum+280) ;
+                break;
+                default:System.out.println("Invalid Input");
+            }
+            for(int i=0;i<nonmain.length;i++)
+            {
+                if(i==ent2)
+                System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+nonmain[i-1]);
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Displaying other menu");
+        }
+        else 
+        {
+            System.out.println("Invalid Input");
+        }
+
+    }
+
+    void rice()
+    {
+        System.out.println("\n\n\n*********RICE,PILLAF AND BIRIYANIS*************");
+        System.out.println("1)Steamed Rice\tCost=75");
+        System.out.println("2)Jeera Rice\tCost=85");
+        System.out.println("3)Lemon Rice\tCost=90");
+        System.out.println("4)Tarkari Biriyani\tCost=150");
+        System.out.println("5)Kashmiri Pulao\tCost=180");
+        System.out.println("6)Vegetable Pulao\tCost=150");
+        System.out.println("7)Barista Pulao\tCost=150");
+        System.out.println("8)Curd Rice\tCost=100");
+        System.out.println("9)Kacchi Biriyani\tCost=300");
+        System.out.println("10)Dum Pukht Biriyani\tCost=300");
+        System.out.println("11)Gosht Hydrabadi Dum Biriyani\tCost=375");
+        
+        String rice[]={"STEAMED RICE","JEERA RICE","LEMON RICE","TARKARI BIRIYANI","KASHMIRI PULAO","VEGETABLE PULAO","BARISTA PULAO","CURD RICE","KACCHI BIRIYANI","DUM PHUKT BIRIYANI","GOSHT HYDRABADI DUM BIRIYANI"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\n\nWould you like to have Rice,pillaf and biriyanis?");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial number of the food item which you would like to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:sum=(sum+75) ;
+                break;
+                case 2:sum=(sum+85) ;
+                break;
+                case 3:sum=(sum+90) ;
+                break;
+                case 4:
+                case 6:
+                case 7:sum=(sum+150) ;
+                break;
+                case 5:sum=(sum+180) ;
+                break;
+                case 8:sum=(sum+100) ;
+                break;
+                case 9:
+                case 10:sum=(sum+300) ;
+                break;
+                case 11:sum=(sum+375) ;
+                break;
+                default:System.out.println("Invalid Input");
+                for(int i=0;i<rice.length;i++)
+                {
+                    if(i==ent2)
+                    System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+rice[i-1]);
+                }
+
+            }
+
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Displaying menu for ROTIS AND BREADS");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void breads()
+    {
+        System.out.println("\n\n\n*********INDIAN CLAY OVEN BAKED BREADS************");
+        System.out.println("1)Tandoori Roti\tCost=20");
+        System.out.println("2)Naan\tCost=30");
+        System.out.println("3)Butter Naan\tCost=40");
+        System.out.println("4)Missi Roti\t Cost=40");
+        System.out.println("5)Paratha-Pudina Lacccha\tCost=35");
+        System.out.println("6)Lahsuni Naan\tCost=35");
+        System.out.println("7)Peshwari Naan\tCost=70");
+        System.out.println("8)Khurmi Naan\tCost=50");
+        System.out.println("9)Kulcha\tCost=50");
+        
+        String bread[]={"TANDOORI ROTI","NAAN","BUTTER NAAN","MISSI ROTI","PARATHA-PUDINA LACCHA","LAHSUNI NAAN","PESHWARI NAAN","KHURMI NAAN","KULCHA"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to have breads?");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial no. of the item which you would like to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:sum=(sum+20) ;
+                break;
+                case 2:sum=(sum+30) ;
+                break;
+                case 3:
+                case 4:sum=(sum+40) ;
+                break;
+                case 5:
+                case 6: sum=(sum+35) ;
+                break;
+                case 7:sum=(sum+70) ;
+                break;
+                case 8:
+                case 9:sum=(sum+50) ;
+                break;
+                default:System.out.println("Invalid Input");
+                for(int i=0;i<bread.length;i++)
+                {
+                    if(i==ent2)
+                    System.out.println("\n\nYOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+bread[i-1]);
+                }
+
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("/n/n/nDisplaying menu for Continental food:");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void continental()
+    {
+        System.out.println("\n\n\n***********CONTINENTAL****************");
+        System.out.println("1)Baked Vegetable\tCost=200");
+        System.out.println("2)Vegetable Pasta Baked\tCost=200");
+        System.out.println("3)Pesto Penne \tCost=225");
+        System.out.println("4)Pasta Carbonara\tCost=250");
+        System.out.println("5)Spinach & Cheese Canneloni\tCost=200");
+        System.out.println("6)Spaghetti/Lasagne\tCost=250");
+        System.out.println("7)Spaghetti Bolognese\tCost=300");
+        System.out.println("8)Grilled Chicken Dregana\tCost=300");
+        System.out.println("9)Chicken and Spinach\tCost=300");
+        System.out.println("10)Fish Almande\tCost=300");
+        System.out.println("11)Chicken Au Gratin \tCost=300");
+        System.out.println("12)Chicken Stronganoff\tCOst=300");
+        System.out.println("13)Prawn Paprika\tCost=450");
+        
+        String conti[]={"BAKED VEGETABLES","VEGETABLE PASTA BAKED","PESTO PENNE","SPINACH & CHEESE CANNELONI","SPAGHETTI/LASAGNE","SPAGHETTI BOLOGNESE","GRILLED CHICKEN DREGANA","CHICKEN AND SPINACH","FISH ALMANDE","CHICKEN AU GRATIN","CHICKEN STRONGANOFF","PRAWN PAPRIKA"};
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\n\nWould you like to have Continental food:");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int ent1=sc.nextInt();
+
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial no. of the food item which you would like to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:
+                case 2:
+                case 5: sum=(sum+200) ;
+                break;
+                case 3: sum=(sum+225) ;
+                case 4:
+                case 6:sum=(sum+250) ;
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:sum=(sum+300) ;
+                break;
+                case 13:sum=(sum+450) ;
+                break;
+                default:System.out.println("Invalid Input");
+                for(int i=0;i<conti.length;i++)
+                {
+                    if(i==ent2)
+                    System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+conti[i-1]);
+                }
+
+            }
+
+        }
+        else if(ent1==0)
+        {
+            System.out.println("\n\nDisplaying menu for FLAVORS OF SOUTH INDIA");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void south()
+    {
+        System.out.println("\n\n\n************FLAVORS OF SOUTH INDIA*****************");
+        System.out.println("1)Uttapam\tCost=110");
+        System.out.println("2)Idli Sambhar\tCost=95");
+        System.out.println("3)Sambhar with vada\tCost=130");
+        System.out.println("4)Dosa\tCost=110");
+        System.out.println("5)Kozi Korma\tCost=250");
+        System.out.println("6)Bagala Dumba Talimphu \tCost=250");
+        System.out.println("7)Neelgiri Chicken Curry\tCost=250");
+        System.out.println("8)Phulsu Malabari \tCost=250");
+        System.out.println("9)Mugbass \tCost=250");
+        System.out.println("10)Min Moilee \tCost=250");
+        
+        String south[]={"UTTAPAM","IDLI SAMBHAR","SAMBHAR WITH VADA","KOZI KORMA","BAGALA DUMBA TALIMPHU","NEELGIRI CHICKEN CURRY","PHULSU MALABARI","MUGBASS","MIN MOILEE"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\n\n\nWould you like to have South Indian Food?");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial no. of the food item which you would like to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:
+                case 4:sum=(sum+110) ;
+                break;
+                case 2: sum=(sum+95) ;
+                break;
+                case 3: sum=sum+130;
+                break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:sum=(sum+250) ;
+                break;
+                default:System.out.println("Invalid Input");
+                for(int i=0;i<south.length;i++)
+                {
+                    if(i==ent2)
+                    System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+south[i-1]);
+                    }
+                    
+
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Displaying menu for Beverages:");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void beverages()
+    {
+        System.out.println("1)Tea\t Cost=35");
+        System.out.println("2)Coffee\tCost=35");
+        System.out.println("3)Lassi\tCost=50");
+        System.out.println("4)Fresh Seasonal Fruit Juices\tCost=80");
+        System.out.println("5)Canned Juices\tCost=80");
+        System.out.println("6)Cold Coffee\tCost=90");
+        System.out.println("7)Fresh Fruit Milkshake\tCost=90");
+        
+        String bever[]={"TEA","COFFEE","LASSI","FRESH SEASONAL FRUIT JUICES","CANNED JUICES","COLD COFFEE","FRESH FRUIT MILKSHAKE"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\n\nWould you like to have beverages?:");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial no. of the food item which you would like to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:
+                case 2:sum=(sum+35) ;
+                break;
+                case 3:sum=(sum+50) ;
+                break;
+                case 4:
+                case 5:sum=(sum+80) ;
+                break;
+                case 6:
+                case 7:sum=sum+90;
+                break;
+                default:System.out.println("Invalid Input");
+                for(int i=0;i<bever.length;i++)
+                {
+                    if(i==ent2)
+                    System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+bever[i-1]);
+                }
+
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("\n\nDisplaying menu for salads:");
+        }
+        else
+        {
+            System.out.println("Invalis Input");
+        }
+    }
+
+    void salads()
+    {
+        System.out.println("Cucumber &Mint Salads\tCost=80");
+        System.out.println("Greek Salads\tCost=80");
+        System.out.println("Tossed Salads\tCost=80");
+        System.out.println("Veg Russian Salads\tCost=80");
+        
+        String salad[]={"CUCUMBER & MINT SALADS","GREEK SALADS","TOSSED SALADS","VEG RUSSIAN SALADS"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to have salads?");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial no. of the type of salad which you would like to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:sum=sum+80;
+                break;
+                default:System.out.println("Invalid Input");
+                for(int i=0;i<salad.length;i++)
+                {
+                    if(i==ent2)
+                    System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+salad[i-1]);
+                }
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Displaying menu for desserts:");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+
+    void desserts()
+    {
+        System.out.println("1) Gulab E Gulkhand\tCost=50");
+        System.out.println("2)Ice Cream-Vanilla\tCost=50");
+        System.out.println("3)Ice Cream-Chocolate\tCost=50");
+        System.out.println("4)Ice Cream-Strawberry\tCost=50");
+        System.out.println("5)Ice Cream-Butterscotch\tCost=50");
+        System.out.println("6)Gajar ka Halwa\tCost=75");
+        System.out.println("7)Moong Dal Halwa\tCost=75");
+        System.out.println("8)Shahi Tukda\tCost=75");
+        System.out.println("9)Rasmalia\tCost=75");
+        System.out.println("10)Fruits of Pallavi\tCost=140");
+        System.out.println("11)Chocolate Mousse\tCost=110");
+        System.out.println("12)Tooty Frooty Cup\tCost=110");
+        System.out.println("13)Banana Split\tCost=110");
+        
+        String des[]={"GULAB E GULKHAND","ICE CREAM-VANILLA","ICE CREAM-CHOCOLATE","ICE CREAM-STRAWBEERY","ICE CREAM-BUTTERSCOTCH","GAJAR KA HALWA","MOONG DAL HALWA","SHAHI TUKDA","RASMALIA","FRUITS OF PALLAVI","CHOCOLATE MOUSEE","TOOTY FRUITY CUP","BANANA SPLIT"};
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Would you like to have desserts?");
+        System.out.println("Enter 1 for yes and 0 for no:");
+        int ent1=sc.nextInt();
+        if(ent1==1)
+        {
+            System.out.println("Enter the serial no. of the dessert which you would love to have:");
+            int ent2=sc.nextInt();
+            switch(ent2)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:sum=sum+50;
+                
+                break;
+                case 6:
+                case 7:
+                case 8:
+                case 9:sum=sum+75;
+               
+                break;
+                case 10:sum=sum+140;
+                
+                break;
+                case 11:
+                case 12:
+                case 13:sum=sum+110;
+                
+                break;
+                default:System.out.println("Invalid Input");
+                for(int i=0;i<des.length;i++)
+                {
+                    if(i==ent2)
+                    System.out.println("YOUR ORDER HAS BEEN SUCCESSFULLY PLACED FOR "+des[i-1]);
+                }
+
+            }
+        }
+        else if(ent1==0)
+        {
+            System.out.println("Thank You So Much For Ordering Your Order Has Been Placed :)");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+            System.out.println("Thank You So Much For Ordering Your Order Has Been Placed :)");
+        }
+    }
+
+    void bill()
+    {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t*************BILL************");
+        System.out.println("\t\t\t\t\t\t\tName of the customer:"+name);
+        System.out.println("\t\t\t\t\t\t\tPhone number of the customer:"+phone);
+        System.out.println("\t\t\t\t\t\t\tNumber of family members:"+famno);
+        System.out.println("\t\t\t\t\t\t\tSection for which you opted:"+str);
+        System.out.println("\n\n\n\n\n\t\t\t\t\t\t\tTOTAL BILL AMOUNT:"+sum);
+        System.out.println("\n\n\t\t\t\t\t\t\tTHANK YOU SO MUCH FOR VISITING OUR HOTEL!!!!");
+        System.out.println("\t\t\t\t\t\t\tSTAY HOME STAY SAFE!!!");
+        System.out.println("\t\t\t\t\t\t\t********************************");
+    }
+    void feedback()
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\n\n\n\nWE WOULD LOVE TO HAVE YOUR FEEDBACK.");
+        System.out.println("PLEASE ENTER SOME ADVICE IF YOU WISH.");
+        String feed=sc.nextLine();
+        System.out.println("THANK YOU "+name+" for your feedback");
+    }
+
+    void dispmenu()
+    {
+        Date d1=new Date();
+        System.out.println("\t\t\t\t\t\t\t"+d1);
+
+    }
+
+    void cancelorder(){
+        System.out.println("Your request is being processed");
+        for(int i=0;i<=1000;i++){
+            if(i%10==0){
+                System.out.println(".");
+            }
+        }
+        System.out.println("Your Order is about to get cancelled from the Hotel Management");
+        for(int i=0;i<=1000;i++){
+            if(i%10==0){
+                System.out.println(".");
+            }
+        }
+        for(int i=0;i<=1000;i++){
+            if(i%5==0){
+                System.out.println(".");
+            }
+        }
+        System.out.println("Your order has been successfully cancelled\nStay Home and Stay Safe\n");
+    }
+
+    public static void main(String[] args)
+    {
+        RestaurantManagement obj=new RestaurantManagement();
+        obj.welcm();
+        obj.custdet();
+        obj.snacks();
+        obj.Starters();
+        obj.starternonveg();
+        obj.nvgapp();
+        obj.maincourse();
+        obj.nonvgmain();
+        obj.sea();
+        obj.vegapp();
+        obj.asian();
+        obj.rice();
+        obj.breads();
+        obj.continental();
+        obj.south();
+        obj.beverages();
+        obj.salads();
+        obj.desserts();
+        obj.bill();
+        obj.dispmenu();
+        obj.feedback();
+
+    }}
+//Our aim is to create a menu driven food-ordering code for those who are new to job at the hotel workplace or this code can be used for the online customers who
+//want to order the food online.
